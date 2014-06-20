@@ -1,0 +1,59 @@
+#include <stdio.h>
+#define MAX 51
+char stack[MAX];
+int in;
+void push(char i);
+char pop();
+void main()
+{
+    char a[MAX] = {};
+    char b[MAX] = {};
+    int i=0, j, k, t=0;
+    fgets(a, MAX, stdin);
+    while(a[i] != '\0'){
+        i++;
+    }
+    //printf("글자수(NULL포함): %d자\n", i);
+    int l = i;
+    int m = i;
+    i=0;
+   while(l>=0){
+       if(a[i]>=65 && a[i]<= 90 || a[i]>=97 && a[i]<=122){
+           push(a[i]);
+           i++;
+          // printf("-i: %d\n", i);
+        }else{
+            while(in){
+                b[t++]=pop();
+                //printf("from stack.b[%d]:%c t: %d\n", t-1, b[t-1], t);
+            }
+            b[i] = a[i];
+            //printf("from a[].b[%d]:%c\n", i, b[i]);
+            i++;
+            t=i;
+           // printf("--i: %d\n", i);
+        }
+        l--;
+   }
+  
+  for(k=0; k<m; k++){
+      if(b[k]>=97 && b[k]<=122){
+        printf("%c", b[k]-32);
+      } else{
+            printf("%c", b[k]);   
+      }  
+   } 
+}
+void push(char i)
+{
+    stack[in++] = i;
+  //  printf("stack[%d]: %c in: %d \n", in-1, stack[in-1], in);
+}
+char pop()
+{
+    if(in == 0) return 0;
+    char temp;
+    temp = stack[in-1];
+    in--;
+    return temp;
+}

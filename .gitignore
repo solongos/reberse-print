@@ -1,60 +1,23 @@
-#include <stdio.h>
-#define MAX 51
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
 
-char stack[MAX];
-int in;
-char temp;
+# Libraries
+*.lib
+*.a
 
-void push(char i);
-char pop();
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
 
-int main()
-{
-    char a[MAX] = {};
-    char b[MAX] = {};
-    int i = 0, j, k, t = 0;
-    int l = 0, m = 0;
-    fgets(a, MAX, stdin);
-   
-    while(a[i] != '\0'){
-        i++; l++; m++;
-    }
-
-    i=0;
-    while(l>=0){                                            //글자 수 만큼 반복
-       if(a[i]>=65 && a[i]<= 90 || a[i]>=97 && a[i]<=122){
-           push(a[i]);                                       //PUSH
-           i++;
-        }else{
-            while(in){
-                b[t++]=pop();
-            }
-            b[i] = a[i];
-            i++;
-            t=i;
-        }
-        l--;
-    }
-
-    for(k=0; k<m; k++){
-      if(b[k]>=97 && b[k]<=122){
-        printf("%c", b[k]-32);
-      } else{
-        printf("%c", b[k]);
-      }
-    }
-    return 0;
-}
-
-void push(char i)
-{
-    stack[in++] = i;
-}
-
-char pop()
-{
-    if(in == 0) return 0;
-    temp = stack[in-1];
-    in--;
-    return temp;
-}
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
